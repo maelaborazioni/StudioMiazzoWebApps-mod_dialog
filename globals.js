@@ -72,12 +72,11 @@ var DIALOGS = new function() {
 			application.output('Cleaning up form "' + formName + '"', LOGGINGLEVEL.DEBUG);
 			if (history.removeForm(formName)) {
 				bluePrintStack.splice(i, 1);
-				if (!solutionModel.removeForm(formName)) {
-					application.output("Can't remove dialog form '" + formName + "'", LOGGINGLEVEL.ERROR);
-				}
-			} else {
-				application.output("Can't remove dialog form '" + formName + "' from history", LOGGINGLEVEL.ERROR);
-			}
+				if (!solutionModel.removeForm(formName)) 
+					application.output("Can't remove dialog form '" + formName + "'", LOGGINGLEVEL.DEBUG);
+				
+			} else 
+				application.output("Can't remove dialog form '" + formName + "' from history", LOGGINGLEVEL.DEBUG);
 		}
 
 		//Create requested blueprint
@@ -89,9 +88,8 @@ var DIALOGS = new function() {
 
 			//Store pointer to otherwise private method on the form, to be used when hiding the form
 			forms[_sFormName]['bluePrintCleanupCallback'] = markBluePrintsForCleanup;
-		} else {
-			application.output("Form '" + _sFormName + "' already exists.", LOGGINGLEVEL.ERROR);
-		}
+		} else 
+			application.output("Form '" + _sFormName + "' already exists.", LOGGINGLEVEL.ERROR);		
 	}
 
 	/**
